@@ -4,16 +4,18 @@ import cn.karlguo.spike.exception.GlobalException;
 import cn.karlguo.spike.mapper.UserMapper;
 import cn.karlguo.spike.pojo.User;
 import cn.karlguo.spike.service.IUserService;
+import cn.karlguo.spike.util.CookieUtil;
 import cn.karlguo.spike.util.MD5Util;
-import cn.karlguo.spike.util.ValidatorUtil;
+import cn.karlguo.spike.util.UUIDUtil;
 import cn.karlguo.spike.vo.LoginVo;
 import cn.karlguo.spike.vo.RespBean;
 import cn.karlguo.spike.vo.RespBeanEnum;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.Objects;
 
 /**
@@ -30,7 +32,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     private UserMapper userMapper;
 
     @Override
-    public RespBean doLogin(LoginVo loginVo) {
+    public RespBean doLogin(LoginVo loginVo, HttpServletRequest request, HttpServletResponse response) {
         String mobile = loginVo.getMobile();
         String password = loginVo.getPassword();
         //判断用户名或密码是否为空，如果为空返回异常
@@ -52,6 +54,11 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
             //return RespBean.error(RespBeanEnum.PASSWORD_ERROR);
             throw new GlobalException(RespBeanEnum.PASSWORD_ERROR);
         }
+
+        //生成cookie
+        String ticket = UUIDUtil.uuid();
+        request.getSession().setAttribute(ticket,user);
+        CookieUtil.setCookie(request,response,"userTicket",ticket);
 
         return RespBean.success();
     }

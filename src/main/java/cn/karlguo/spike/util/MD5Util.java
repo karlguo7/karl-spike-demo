@@ -1,6 +1,5 @@
 package cn.karlguo.spike.util;
 
-import org.apache.commons.codec.cli.Digest;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.stereotype.Component;
 
