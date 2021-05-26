@@ -18,6 +18,8 @@ public enum RespBeanEnum {
     SUCCESS(200, "SUCCESS"),
     ERROR(500, "服务端异常"),
     USER_NOT_FOUND_ERROR(500110, "用户不存在"),
+    //Bind error
+    BIND_ERROR(500120,"参数校验异常"),
     //登录模块
     LOGIN_ERROR(500210, "用户名或密码错误"),
     MOBILE_ERROR(500211, "手机号码格式不正确"),

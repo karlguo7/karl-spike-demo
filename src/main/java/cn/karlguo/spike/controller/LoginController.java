@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 
 /*
  * @Classname LoginController
@@ -41,7 +43,7 @@ public class LoginController {
      */
     @RequestMapping(value = "/doLogin", method = RequestMethod.POST)
     @ResponseBody
-    public RespBean doLogin(@RequestBody LoginVo loginVo) {
+    public RespBean doLogin(@Valid @RequestBody LoginVo loginVo) {
         return userService.doLogin(loginVo);
     }
 
