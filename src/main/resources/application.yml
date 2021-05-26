@@ -3,8 +3,12 @@ server:
   port: 8080
 # 应用名称
 spring:
-  application:
-    name: karl-spike-demo
+#  application:
+#    name: karl-spike-demo
+#  mvc:
+#    hiddenmethod:
+#      filter:
+#        enabled: true
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver # 数据库驱动
     name: defaultDataSource # 数据源名称
@@ -31,16 +35,16 @@ spring:
   # THYMELEAF (ThymeleafAutoConfiguration)
   thymeleaf:
     cache: false # 开启模板缓存（默认值： true ）
-    check-template: true # 检查模板是否存在，然后再呈现
-    check-template-location: true # 检查模板位置是否正确（默认值 :true ）
-    enabled: true # 开启 MVC Thymeleaf 视图解析（默认值： true ）
+    #check-template: true # 检查模板是否存在，然后再呈现
+    #check-template-location: true # 检查模板位置是否正确（默认值 :true ）
+    #enabled: true # 开启 MVC Thymeleaf 视图解析（默认值： true ）
     encoding: UTF-8 # 模板编码
-    excluded-view-names: '' # 要被排除在解析之外的视图名称列表，⽤逗号分隔
-    mode: HTML5
-    prefix: classpath:/templates/ # 在构建 URL 时添加到视图名称前的前缀（默认值： classpath:/templates/ ）
-    suffix: .html # 在构建 URL 时添加到视图名称后的后缀（默认值： .html ）
-    servlet:
-      content-type: text/html
+    #excluded-view-names: '' # 要被排除在解析之外的视图名称列表，⽤逗号分隔
+    #mode: HTML
+    #prefix: classpath:/templates/ # 在构建 URL 时添加到视图名称前的前缀（默认值： classpath:/templates/ ）
+    #suffix: .html # 在构建 URL 时添加到视图名称后的后缀（默认值： .html ）
+#    servlet:
+#      content-type: text/html
 
 mybatis-plus:
   #配置mapper.xml映射文件
